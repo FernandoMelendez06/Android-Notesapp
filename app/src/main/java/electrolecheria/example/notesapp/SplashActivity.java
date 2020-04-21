@@ -1,6 +1,7 @@
 package electrolecheria.example.notesapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -25,6 +26,18 @@ public class SplashActivity extends AppCompatActivity {
         final Runnable splash = new Runnable() {
             @Override
             public void run() {
+                SharedPreferences prefs= getSharedPreferences("prefs_notes",MODE_PRIVATE);
+               boolean userlogged= prefs.getBoolean("userLogged",false);
+               Intent intent;
+               if (userlogged){
+
+                   intent = new Intent(SplashActivity.this,NotesActivityActivity.class);
+               }else{
+                   intent = new Intent(SplashActivity.this,LoginActivity.class);
+
+               }
+
+
                 Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();

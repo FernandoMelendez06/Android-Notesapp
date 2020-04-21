@@ -1,6 +1,7 @@
 package electrolecheria.example.notesapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
                 String Username = etusuario.getText().toString();
                 String Password = etclave.getText().toString();
                 if(Username.equals("Fernando")&& Password.equals("1234")){
+                    setusersession();
                     Intent intent = new Intent(LoginActivity.this,NotesActivity.class);
                     intent.putExtra("Username",Username);
                     intent.putExtra("Password",Password);
@@ -37,4 +39,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+    private void setusersession(){
+
+        SharedPreferences.Editor editor= getSharedPreferences("prefs_notes",MODE_PRIVATE).edit();
+        editor.putBoolean("userLogged",true);
+        editor.apply();
+    }
+
 }
