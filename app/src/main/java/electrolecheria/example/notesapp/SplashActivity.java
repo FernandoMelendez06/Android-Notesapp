@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActiviy {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,19 +26,18 @@ public class SplashActivity extends AppCompatActivity {
         final Runnable splash = new Runnable() {
             @Override
             public void run() {
-                SharedPreferences prefs= getSharedPreferences("prefs_notes",MODE_PRIVATE);
-               boolean userlogged= prefs.getBoolean("userLogged",false);
+
+               boolean userlogged= prefs.getPref(Constants.PREF_USER);
+
                Intent intent;
                if (userlogged){
 
-                   intent = new Intent(SplashActivity.this,NotesActivityActivity.class);
+                   intent = new Intent(SplashActivity.this,NotesActivity.class);
                }else{
                    intent = new Intent(SplashActivity.this,LoginActivity.class);
 
                }
 
-
-                Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
