@@ -1,7 +1,6 @@
 package electrolecheria.example.notesapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+
+import electrolecheria.example.notesapp.notes.NotesActivity;
 
 public class LoginActivity extends BaseActiviy {
     @Override
@@ -27,7 +27,7 @@ public class LoginActivity extends BaseActiviy {
                 String Password = etclave.getText().toString();
                 if(Username.equals("Fernando")&& Password.equals("1234")){
                     prefs.setPref(Constants.PREF_USER,true);;
-                    Intent intent = new Intent(LoginActivity.this,NotesActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, NotesActivity.class);
                     intent.putExtra("Username",Username);
                     intent.putExtra("Password",Password);
                     startActivity(intent);

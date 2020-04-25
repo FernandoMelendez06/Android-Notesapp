@@ -1,15 +1,14 @@
 package electrolecheria.example.notesapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import electrolecheria.example.notesapp.notes.NotesActivity;
 
 public class SplashActivity extends BaseActiviy {
     @Override
@@ -32,7 +31,7 @@ public class SplashActivity extends BaseActiviy {
                Intent intent;
                if (userlogged){
 
-                   intent = new Intent(SplashActivity.this,NotesActivity.class);
+                   intent = new Intent(SplashActivity.this, NotesActivity.class);
                }else{
                    intent = new Intent(SplashActivity.this,LoginActivity.class);
 
